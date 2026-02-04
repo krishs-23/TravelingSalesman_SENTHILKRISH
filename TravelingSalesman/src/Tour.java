@@ -55,7 +55,7 @@ public class Tour {
 
     
     public double length() {
-        
+        return 0.0;
     }
 
     
