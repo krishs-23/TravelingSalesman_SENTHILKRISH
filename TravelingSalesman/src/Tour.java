@@ -14,17 +14,14 @@ public class Tour {
         private Node next;
     }
     
-   
     private Node home;
     private int size;
-    
-    
+   
     public Tour() {
     	home = null;
     	size = 0;
     }
 
-    
     public Tour(Point a, Point b, Point c, Point d) {
     	Node n1 = new Node();
     	Node n2 = new Node();
@@ -53,7 +50,6 @@ public class Tour {
     	return size;
     }
 
-    
     public double length() {
         if (home == null) {
 			return 0.0;
@@ -70,7 +66,6 @@ public class Tour {
         return totalDistance;
     }
 
-    
     public String toString() {
     	if (home == null) {
             return "";
@@ -92,7 +87,6 @@ public class Tour {
         return sb.toString();
     }
 
-   
     public void draw() {
     	if (home == null) {
             return;
@@ -105,12 +99,38 @@ public class Tour {
             current = current.next;
         }
     }
-
     
     public void insertNearest(Point p) {
-    	
-    }
+    	if (home == null) {
+            Node n = new Node();
+            n.data = p;
+            n.next = n; 
+            home = n;
+            size = 1;
+            return;
+        }
 
+        Node bestNode = null;
+        double minDist = Double.MAX_VALUE;
+        Node current = home;
+
+        for (int i = 0; i < size; i++) {
+            double dist = current.data.distanceTo(p);
+            
+            if (dist < minDist) {
+                minDist = dist;
+                bestNode = current;
+            }
+            
+            current = current.next;
+        }
+
+        Node n = new Node();
+        n.data = p;
+        n.next = bestNode.next;
+        bestNode.next = n;
+        size++;
+    }
    
     public void insertSmallest(Point p) {
     	
