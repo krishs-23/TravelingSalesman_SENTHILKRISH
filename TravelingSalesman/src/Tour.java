@@ -55,17 +55,55 @@ public class Tour {
 
     
     public double length() {
-        return 0.0;
+        if (home == null) {
+			return 0.0;
+		}
+        
+        double totalDistance = 0.0;
+		Node curr = home;
+		
+		for (int i = 0; i < size; i++) {
+            totalDistance += curr.data.distanceTo(curr.next.data);
+            curr = curr.next;
+        }
+
+        return totalDistance;
     }
 
     
     public String toString() {
-        return null;
+    	if (home == null) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        Node current = home;
+
+        for (int i = 0; i < size; i++) {
+            sb.append(current.data.toString());
+            
+            if (i < size - 1) {
+                sb.append("\n");
+            }
+            
+            current = current.next;
+        }
+
+        return sb.toString();
     }
 
    
-    public void draw(){
-    	
+    public void draw() {
+    	if (home == null) {
+            return;
+        }
+
+        Node current = home;
+        
+        for (int i = 0; i < size; i++) {
+            current.data.drawTo(current.next.data);
+            current = current.next;
+        }
     }
 
     
