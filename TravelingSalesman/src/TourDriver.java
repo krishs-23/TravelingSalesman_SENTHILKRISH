@@ -31,7 +31,7 @@ public class TourDriver
             	String[] coordinates = nextLine.trim().split("\\s+");
             	double x = Double.parseDouble(coordinates[0]);
             	double y = Double.parseDouble(coordinates[1]);
-            	point p = new point(x, y);
+            	Point p = new Point(x, y);
             	
             	//test.insertNearest(p);
             	test.insertSmallest(p);
