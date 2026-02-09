@@ -33,7 +33,7 @@ public class TourDriver
             	double y = Double.parseDouble(coordinates[1]);
             	point p = new point(x, y);
             	
-            	//TEMP test.insertNearest(p);
+            	//test.insertNearest(p);
             	test.insertSmallest(p);
             	
                 nextLine = bf.readLine();
