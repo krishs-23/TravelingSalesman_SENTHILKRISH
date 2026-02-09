@@ -76,11 +76,7 @@ public class Tour {
 
         for (int i = 0; i < size; i++) {
             sb.append(current.data.toString());
-            
-            if (i < size - 1) {
-                sb.append("\n");
-            }
-            
+            sb.append("\n");
             current = current.next;
         }
 
