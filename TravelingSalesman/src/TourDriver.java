@@ -33,8 +33,8 @@ public class TourDriver
             	double y = Double.parseDouble(coordinates[1]);
             	Point p = new Point(x, y);
             	
-            	//test.insertNearest(p);
-            	test.insertSmallest(p);
+            	test.insertNearest(p);
+            	//test.insertSmallest(p);
             	
                 nextLine = bf.readLine();
             }
@@ -47,7 +47,7 @@ public class TourDriver
         }
 
         System.out.println(test);
-        System.out.println("Tour length = " + test.length());
+        System.out.printf("Tour length = %.4f\n", test.length());
         System.out.println("Number of points = " + test.size());
 
         test.draw();
