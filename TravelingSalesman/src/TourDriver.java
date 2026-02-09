@@ -25,11 +25,19 @@ public class TourDriver
             StdDraw.setXscale(0, Double.parseDouble(points[0]));
             StdDraw.setYscale(0, Double.parseDouble(points[1]));
             String nextLine = bf.readLine();
-            while (nextLine != null && !nextLine.equals(""))
-            {
+            
+            while (nextLine != null && !nextLine.equals("")) {
                 // Add your code here to parse each line of the input.
+            	String[] coordinates = nextLine.trim().split("\\s+");
+            	double x = Double.parseDouble(coordinates[0]);
+            	double y = Double.parseDouble(coordinates[1]);
+            	point p = new point(x, y);
+            	
+            	test.insertNearest(p);
+            	
                 nextLine = bf.readLine();
             }
+            
             bf.close();
         }
         catch (Exception e)
