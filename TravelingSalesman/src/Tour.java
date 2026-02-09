@@ -133,6 +133,35 @@ public class Tour {
     }
    
     public void insertSmallest(Point p) {
-    	
+    	if (home == null) {
+            Node n = new Node();
+            n.data = p;
+            n.next = n;
+            home = n;
+            size = 1;
+            return;
+        }
+
+        Node bestNode = null;
+        double minChange = Double.MAX_VALUE;
+        Node current = home;
+
+        for (int i = 0; i < size; i++) {
+            double currentEdge = current.data.distanceTo(current.next.data);
+            double newEdges = current.data.distanceTo(p) + p.distanceTo(current.next.data);
+            double change = newEdges - currentEdge;
+
+            if (change < minChange) {
+                minChange = change;
+                bestNode = current;
+            }
+            current = current.next;
+        }
+
+        Node n = new Node();
+        n.data = p;
+        n.next = bestNode.next;
+        bestNode.next = n;
+        size++;
     }
 }
