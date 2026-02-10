@@ -7,18 +7,23 @@ import java.io.FileReader;
  * 
  * Name: Krish Senthil
  * Period: 2nd
- * Last Revision Date: 02/04/2026
- * Description:
- *  
+ * Last Revision Date: 02/09/2026
+ * Description: A driver class to read points from a file, 
+ *  insert them into a Tour using both heuristics, and display the results
  */
-public class TourDriver
-{
-    public static void main(String[] args)
-    {
+public class TourDriver {
+	
+	/*
+	 * Main method to read points from a file, insert them into a Tour using both heuristics, 
+	 * and display the results while drawing the tour using StdDraw
+	 */
+    public static void main(String[] args) {
+    	// Create a new Tour object to hold the points
         Tour test = new Tour();
-        try
-        {
-            String filename = "./input/tsp1000.txt"; // Try out different sample input files!
+        
+        // Read points from a file and insert them into the tour using both heuristics
+        try {
+            String filename = "./input/tsp10.txt"; // Try out different sample input files!
             BufferedReader bf = new BufferedReader(new FileReader(new File(filename)));
             String scale = bf.readLine();
             String[] points = scale.split(" ");
@@ -34,22 +39,24 @@ public class TourDriver
             	Point p = new Point(x, y);
             	
             	test.insertNearest(p);
-            	//test.insertSmallest(p);
+            	test.insertSmallest(p);
             	
                 nextLine = bf.readLine();
             }
             
             bf.close();
         }
-        catch (Exception e)
-        {
+        // Catch any exceptions that occur during file reading and parsing
+        catch (Exception e) {
             e.printStackTrace();
         }
 
+        // Print the tour, its length, and the number of points in the tour
         System.out.println(test);
         System.out.printf("Tour length = %.4f\n", test.length());
         System.out.println("Number of points = " + test.size());
 
+        // Draw the tour using StdDraw
         test.draw();
     }
 }
