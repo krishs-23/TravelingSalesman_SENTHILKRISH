@@ -173,7 +173,7 @@ public class Tour {
             
             // If the distance from the current node to the new point is less than the minimum 
             // distance found so far, update minimum distance and set best node to current node
-            if (dist <= minDist) {
+            if (dist < minDist) {
                 minDist = dist;
                 bestNode = current;
             }
